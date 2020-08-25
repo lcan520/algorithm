@@ -45,6 +45,10 @@ package com.algorithm.leetcode.editor.cn;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.date.DateUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * 有效的括号:valid-parentheses:20
  *
@@ -56,15 +60,40 @@ public class P20ValidParentheses {
     public static void main(String[] args) {
         Solution solution = new P20ValidParentheses().new Solution();
         TimeInterval timer = DateUtil.timer();
-        // TODO 代码调用solution.<method>
+        boolean valid = solution.isValid("()[]{}");
         long interval = timer.interval() / 1000L;
-        System.out.println("interval = " + interval);
+        System.out.println("valid = " + valid);
+        System.out.println("interval = " + interval + "ms");
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean isValid(String s) {
-            return false;
+            //不需要扩容
+            char[] chars = s.toCharArray();
+            char[] stack = new char[chars.length];
+            if (chars.length % 2 != 0) {
+                return false;
+            }
+            int index = 0;
+            for (char aChar : chars) {
+                switch (aChar) {
+                    case '{':
+                        stack[index++] = '}';
+                        break;
+                    case '[':
+                        stack[index++] = ']';
+                        break;
+                    case '(':
+                        stack[index++] = ')';
+                        break;
+                    default:
+                        if (index == 0 || stack[--index] != aChar) {
+                            return false;
+                        }
+                }
+            }
+            return index == 0;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
