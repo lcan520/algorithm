@@ -35,6 +35,10 @@
 package com.algorithm.leetcode.editor.cn;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.date.DateUtil;
+import utils.ArrayUtil;
+
+import java.util.Arrays;
+
 /**
  * 合并两个有序数组:merge-sorted-array:88
  * @author lcan
@@ -46,14 +50,26 @@ public class P88MergeSortedArray{
         Solution solution = new P88MergeSortedArray().new Solution();
 		TimeInterval timer = DateUtil.timer();
 		// TODO 代码调用solution.<method>
-		long interval = timer.interval()/1000L;
-		System.out.println("interval = " + interval);
+        int[] nums1 = {0};
+        int[] nums2 = {1};
+                solution.merge(nums1, 0, nums2, 1);
+		long interval = timer.interval();
+		System.out.println("interval = " + interval + "ms");
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public void merge(int[] nums1, int m, int[] nums2, int n) {
-
+            int tail = nums1.length - 1;
+            m = m - 1;
+            n = n - 1;
+            while (n >= 0) {
+                if (m < 0 || nums1[m] <= nums2[n]) {
+                    nums1[tail--] = nums2[n--];
+                } else {
+                    nums1[tail--] = nums1[m--];
+                }
+            }
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
