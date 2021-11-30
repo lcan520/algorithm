@@ -54,7 +54,7 @@ public class P28ImplementStrstr {
                 return -1;
             }
 
-            // 构造KMP中的dp矩阵
+            // 构造 中的dp矩阵
             int m = needle.length();
             // 各个状态(行)遇到下一个字符(列)跳转到哪个状态
             int[][] dp = new int[m][256];
