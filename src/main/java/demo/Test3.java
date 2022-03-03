@@ -26,9 +26,6 @@ public class Test3 {
         printer1.start();
         printer2.start();
         printer3.start();
-        printer1.join();
-        printer2.join();
-        printer3.join();
 
     }
 }
