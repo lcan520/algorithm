@@ -43,9 +43,11 @@ package com.algorithm.leetcode.editor.cn;
 import cn.hutool.core.date.TimeInterval;
 import cn.hutool.core.date.DateUtil;
 
+import java.util.Arrays;
+
 public class P745PrefixAndSuffixSearch {
     public static void main(String[] args) {
-        WordFilter solution = new P745PrefixAndSuffixSearch().new WordFilter();
+        WordFilter solution = new P745PrefixAndSuffixSearch().new WordFilter(new String[]{});
         TimeInterval timer = DateUtil.timer();
         // TODO 代码调用solution.<method>
         long interval = timer.interval();
